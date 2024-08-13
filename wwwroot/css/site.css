@@ -20,3 +20,15 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Centra el contenido en la pantalla y ajusta el ancho */
+.centered-form {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh; /* Ocupa toda la altura de la ventana */
+}
+
+.form-container {
+  width: 70%; /* Ocupa el 70% del ancho de la pantalla */
+  max-width: 800px; /* Opcional: establece un ancho máximo */
+}
