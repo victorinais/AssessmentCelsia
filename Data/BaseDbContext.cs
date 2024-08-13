@@ -9,6 +9,7 @@ public class BaseDbContext : DbContext
     {
     }
 
+    public DbSet<Usuario> Usuarios { get; set; }
     public DbSet<Cliente> Clientes { get; set; }
     public DbSet<Factura> Facturas { get; set; }
     public DbSet<Transaccion> Transacciones { get; set; }
@@ -16,6 +17,27 @@ public class BaseDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        // Configuración de la entidad Usuarios
+            var salt = PasswordHelper.GenerateSalt();
+            modelBuilder.Entity<Usuario>().HasData(
+                new Usuario
+                {
+                    Id = 1,
+                    Email = "robinson.cortes@riwi.io",
+                    Salt = salt,
+                    PasswordHash = PasswordHelper.HashPassword("password", salt),
+                    IsAdmin = true
+                },
+                new Usuario
+                {
+                    Id = 2,
+                    Email = "vicmarin50@gmail.com",
+                    Salt = salt,
+                    PasswordHash = PasswordHelper.HashPassword("password", salt),
+                    IsAdmin = true
+                }
+            );
 
         // Configuracion de la entidad Cliente
         modelBuilder.Entity<Cliente>(entity =>
