@@ -1,0 +1,37 @@
+@model Assessment.ViewModels.ExcelUploadViewModel
+
+@{
+    ViewBag.Title = "Subir Archivo Excel";
+}
+
+<h2 class="text-center">Subir Archivo Excel</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger text-center">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<div class="centered-form">
+    <div class="form-container">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Upload" asp-controller="Excel" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="excelFile" class="mb-2">Seleccione un archivo Excel:</label>
+                        <input type="file" name="ExcelFile" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Subir</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
