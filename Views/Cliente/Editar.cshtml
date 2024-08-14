@@ -1,0 +1,43 @@
+@model app.Models.Cliente;
+
+@{
+    ViewData["Title"] = "Editar Cliente";
+}
+
+<div class="row">
+    <div class="col-sm-8 offset-sm-2">
+        <h2>Editar Cliente</h2>
+
+        <div class="card">
+            <div class="card-body">
+                <form asp-controller="Cliente" asp-action="Editar" method="post">
+                    <input asp-for="ClienteId" type="hidden">
+                    <div class="mb-3">
+                        <label>Nombre Completo</label>
+                        <input class="form-control" asp-for="Nombre" type="text" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Numero de Identificación</label>
+                        <input class="form-control" asp-for="NumeroIdentificacion" type="text" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Dirección</label>
+                        <input class="form-control" asp-for="Direccion" type="text" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Teléfono</label>
+                        <input class="form-control" asp-for="Telefono" type="text" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Correo Eléctronico</label>
+                        <input class="form-control" asp-for="CorreoElectronico" type="text" required>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <a asp-controller="Cliente" asp-action="Lista" class="btn btn-warning">Volver</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
