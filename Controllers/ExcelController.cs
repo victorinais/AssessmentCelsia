@@ -16,7 +16,7 @@ public class ExcelController : Controller
         _context = context;
     }
 
-    //[Authorize]
+    [Authorize]
     [HttpGet]
     public IActionResult Index()
     {
