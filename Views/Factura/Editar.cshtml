@@ -1,0 +1,45 @@
+@model app.Models.Factura
+
+@{
+    ViewData["Title"] = "Editar Factura";
+}
+
+<div class="row">
+    <div class="col-sm-8 offset-sm-2">
+        <h2>Editar Factura</h2>
+        <div class="card">
+            <div class="card-body">
+                <form asp-controller="Factura" asp-action="Editar" method="post">
+                    <input type="hidden" asp-for="FacturaId" />
+                    <div class="mb-3">
+                        <label>Número de Factura</label>
+                        <input class="form-control" asp-for="NumeroFactura" type="text" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Periodo de Facturación</label>
+                        <input class="form-control" asp-for="PeriodoFacturacion" type="text" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Monto Facturado</label>
+                        <input class="form-control" asp-for="MontoFacturado" type="decimal" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Monto Pagado</label>
+                        <input class="form-control" asp-for="MontoPagado" type="decimal" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Cliente</label>
+                        <select class="form-control" asp-for="ClienteId" asp-items="@(new SelectList(ViewBag.Clientes, "ClienteId", "Nombre"))" required>
+                            <option value="">Seleccione un cliente</option>
+                        </select>
+                        <span asp-validation-for="ClienteId" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                        <a asp-controller="Factura" asp-action="Lista" class="btn btn-warning">Volver</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

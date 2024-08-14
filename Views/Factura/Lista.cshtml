@@ -1,0 +1,51 @@
+@model IEnumerable<app.Models.Factura>
+
+@{
+    ViewData["Title"] = "Lista de Facturas";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h2>Lista de Facturas</h2>
+        <a asp-action="Nuevo" class="btn btn-primary mb-3">Nueva Factura</a>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Número de Factura</th>
+                    <th>Periodo de Facturación</th>
+                    <th>Monto Facturado</th>
+                    <th>Monto Pagado</th>
+                    <th>Cliente</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var factura in Model)
+                {
+                    <tr>
+                        <td>@factura.FacturaId</td>
+                        <td>@factura.NumeroFactura</td>
+                        <td>@factura.PeriodoFacturacion</td>
+                        <td>@factura.MontoFacturado</td>
+                        <td>@factura.MontoPagado</td>
+                        <td>@factura.Cliente.Nombre</td> <!-- Asegúrate que Cliente está incluido -->
+                        <td>
+                            <a asp-action="Editar" asp-route-id="@factura.FacturaId" class="btn btn-warning">Editar</a>
+                            <a asp-action="Eliminar" asp-route-id="@factura.FacturaId" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        function confirmar(){
+            return confirm("¿Estás seguro de eliminar este empleado?")
+        }
+    </script>
+}
